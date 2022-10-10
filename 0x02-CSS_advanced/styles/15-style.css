@@ -5,8 +5,8 @@ html {
     font-size: 62.5%;
 }
 
-* {
-    box-sizing: content-box;
+*, *:before, *:after {
+    box-sizing: border-box;
 }
 
 body {
