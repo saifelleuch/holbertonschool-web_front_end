@@ -24,11 +24,11 @@ a {
     color: var(--color-primary);
 }
 
-.section-tagline{
+.section-tagline {
     color: var(--color-primary);
 }
 
-.section-header-align {
+.section-header {
     text-align: var(--section-header-align);
 }
 
