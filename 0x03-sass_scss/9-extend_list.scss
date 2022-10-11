@@ -2,12 +2,20 @@
 Text color #00FF00 to all tags of class .success and extend style of the class .info
 Text color #FF0000 to all tags of class .warning and extend style of the class .info */
 
-.info, .success, .warning {
+%info {
     font-size: 12px;
-  
-  &.success in .info {
-    color: #00FF00; }
-  
-  &.warning in .info {
-    color: #FF0000; }
+}
+
+.info {
+    @extend %info;
+}
+
+.success {
+    @extend %info;
+    color: #00FF00;
+}
+
+.warning {
+    @extend %info;
+    color: #FF0000;
 }
