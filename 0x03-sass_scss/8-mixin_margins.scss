@@ -1,0 +1,7 @@
+/* Margin left and right at 10px to body tags
+Margin left and right at 15px to div tags */
+
+body & div {
+    margin-left: 10px 15px;
+    margin-right: 10px 15px;
+}
