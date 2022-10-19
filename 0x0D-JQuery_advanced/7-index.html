@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"
+    ></script>
+    <script type="application/javascript">
+        $(document).ready(() => {
+            const createSearchForm = () => {
+          $('body').append(
+            $('<input>', { type: 'text' }),
+            $('<input>', { type: 'submit' }).click(() => {
+              queryWikipedia($('input:nth-of-type(1)').val());
+            }),
+            $('<ul>')
+          );
+        };
+        const addNewArticle = (id, title, snippet) => {
+          $('ul').append(
+            $('<li>').append(
+              $('<p>').append(
+                $('<span>').text(id + ' - '),
+                $('<b>').text(title)
+              ),
+              $('<p>').append(snippet)
+            )
+          );
+        };
+        const queryWikipedia = (search) => {
+          $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: 'https://en.wikipedia.org/w/api.php' + '?origin=*',
+            data: {
+              action: 'query',
+              list: 'search',
+              srsearch: search,
+              format: 'json',
+            },
+            success: (res) => {
+              res.query.search.forEach(({ pageid, title, snippet }) => {
+                addNewArticle(pageid, title, snippet);
+              });
+            },
+          }).fail((jqXHR, textStatus, error) => {
+            alert('Sorry, there was a problem!');
+          });
+        };
+        createSearchForm();
+      });
+      </script>
+  </head>
+  <body></body>
+</html>
